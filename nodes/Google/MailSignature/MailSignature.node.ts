@@ -1,8 +1,8 @@
 import { INodeTypeBaseDescription, IVersionedNodeType, VersionedNodeType } from 'n8n-workflow';
 
-import { MailSignature } from './v1/MailSignature.node';
+import { MailSignatureV1 } from './v1/MailSignature.node';
 
-export class Gmail extends VersionedNodeType {
+export class MailSignature extends VersionedNodeType {
 	constructor() {
 		const baseDescription: INodeTypeBaseDescription = {
 			displayName: 'Mail Signature',
@@ -15,7 +15,7 @@ export class Gmail extends VersionedNodeType {
 		};
 
 		const nodeVersions: IVersionedNodeType['nodeVersions'] = {
-			1: new MailSignature(baseDescription),
+			1: new MailSignatureV1(baseDescription),
 		};
 
 		super(nodeVersions, baseDescription);

@@ -9,10 +9,7 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 
-import {
-	googleApiRequest,
-	unescapeSnippets,
-} from '../GenericFunctions';
+import { googleApiRequest, unescapeSnippets } from '../GenericFunctions';
 
 import { signatureFields, signatureOperations } from './SignatureDescription';
 
@@ -85,7 +82,7 @@ const versionDescription: INodeTypeDescription = {
 	],
 };
 
-export class MailSignature implements INodeType {
+export class MailSignatureV1 implements INodeType {
 	description: INodeTypeDescription;
 
 	constructor(baseDescription: INodeTypeBaseDescription) {
@@ -144,10 +141,7 @@ export class MailSignature implements INodeType {
 				});
 			}
 		}
-		if (
-			['signature'].includes(resource) &&
-			['get'].includes(operation)
-		) {
+		if (['signature'].includes(resource) && ['get'].includes(operation)) {
 			return this.prepareOutputData(unescapeSnippets(returnData));
 		}
 		return this.prepareOutputData(returnData);
